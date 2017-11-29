@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoinListComponent implements OnInit {
 
-  private coins = [
+  coins = [
     {
       "id": 1,
       "name": "Delaware State Quarter",
