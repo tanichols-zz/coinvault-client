@@ -13,7 +13,7 @@ import { CategoryComponent } from './components/category/category.component';
 
 const appRoutes: Routes = [
   { path: 'categories', component: CategoriesComponent },
-  { path: 'categories/:catId', component: CategoryComponent}
+  { path: 'categories/:catId', component: CategoryComponent},
   { path: '', redirectTo: '/categories', pathMatch: 'full' },
 ];
 
