@@ -23,4 +23,20 @@ export class CategoryService {
         );
     });
   }
+
+  getCategoryById(id: number): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const apiURL = `${this.apiRoot}/categories/${id}`;
+      this.http.get<Category>(apiURL)
+        .toPromise()
+        .then(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
 }

@@ -6,24 +6,29 @@ import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
-  selector: 'cv-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'cv-category-page',
+  templateUrl: './category-page.component.html',
+  styleUrls: ['./category-page.component.css']
 })
-export class NavbarComponent implements OnInit {
-  categories: Category[];
+export class CategoryPageComponent implements OnInit {
+  category: Category;
   loading = false;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private categoryService: CategoryService
-  ) { }
+  ) {
+    this.route.params.subscribe(params => {
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit() {
-    this.categoryService.getCategories().then(
+    const id = +this.route.snapshot.paramMap.get('catId');
+    this.categoryService.getCategoryById(id).then(
       res => {
-        this.categories = res;
+        this.category = res;
         this.loading = false;
       },
       err => {
@@ -31,5 +36,4 @@ export class NavbarComponent implements OnInit {
       }
     );
   }
-
 }

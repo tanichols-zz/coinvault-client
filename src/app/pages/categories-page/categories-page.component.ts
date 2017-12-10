@@ -4,11 +4,11 @@ import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
 
 @Component({
-  selector: 'cv-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  selector: 'cv-categories-page',
+  templateUrl: './categories-page.component.html',
+  styleUrls: ['./categories-page.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesPageComponent implements OnInit {
   categories: Category[];
   loading = true;
 
@@ -17,7 +17,6 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getCategories().then(
       res => {
-        console.log(res);
         this.categories = res;
         this.loading = false;
       },

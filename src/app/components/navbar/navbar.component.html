@@ -13,9 +13,8 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/categories/1">Category 1</a>
-          <a class="dropdown-item" routerLink="/categories/2">Category 2</a>
-          <a class="dropdown-item" routerLink="/categories/3">Category 3</a>
+          <h6 *ngIf="loading" class="dropdown-header">Loading...</h6>
+          <a *ngFor="let category of categories" class="dropdown-item" routerLink="/categories/{{category.id}}">{{category.title}}</a>
         </div>
       </li>
     </ul>

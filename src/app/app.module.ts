@@ -7,13 +7,12 @@ import { CategoryService } from './services/category.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CoinComponent } from './components/coin/coin.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { CategoryComponent } from './components/category/category.component';
+import { CategoriesPageComponent } from './pages/categories-page/categories-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
 
 const appRoutes: Routes = [
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'categories/:catId', component: CategoryComponent},
+  { path: 'categories', component: CategoriesPageComponent },
+  { path: 'categories/:catId', component: CategoryPageComponent},
   { path: '', redirectTo: '/categories', pathMatch: 'full' },
 ];
 
@@ -21,9 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    CoinComponent,
-    CategoriesComponent,
-    CategoryComponent
+    CategoriesPageComponent,
+    CategoryPageComponent
   ],
   imports: [
     BrowserModule,
