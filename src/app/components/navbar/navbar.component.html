@@ -25,6 +25,9 @@
       <li *ngIf="authService.authenticated" (click)="authService.logout()" class="nav-item">
         <a class="nav-link">Log Out</a>
       </li>
+      <li *ngIf="authService.authenticated" class="nav-item">
+        <a class="nav-link" routerLink="/admin">Admin</a>
+      </li>
     </ul>
   </div>
 </nav>
