@@ -3,7 +3,7 @@ import { Category } from './category';
 export class Coin {
   name: string;
   year: number;
-  imageLink: string;
+  image_link: string;
   description: string;
   category: Category;
 }
