@@ -9,8 +9,8 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  private categories: Category[];
-  private loading = true;
+  categories: Category[];
+  loading = true;
 
   constructor(private categoryService: CategoryService) {}
 
