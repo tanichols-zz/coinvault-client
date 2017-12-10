@@ -18,5 +18,13 @@
         </div>
       </li>
     </ul>
+     <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!authService.authenticated" (click)="authService.login()" class="nav-item">
+        <a class="nav-link">Log In</a>
+      </li>
+      <li *ngIf="authService.authenticated" (click)="authService.logout()" class="nav-item">
+        <a class="nav-link">Log Out</a>
+      </li>
+    </ul>
   </div>
 </nav>

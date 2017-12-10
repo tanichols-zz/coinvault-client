@@ -4,11 +4,11 @@ import { Location } from '@angular/common';
 
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/category.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'cv-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
   categories: Category[];
@@ -17,7 +17,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

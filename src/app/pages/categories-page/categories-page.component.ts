@@ -5,8 +5,7 @@ import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'cv-categories-page',
-  templateUrl: './categories-page.component.html',
-  styleUrls: ['./categories-page.component.css']
+  templateUrl: './categories-page.component.html'
 })
 export class CategoriesPageComponent implements OnInit {
   categories: Category[];
