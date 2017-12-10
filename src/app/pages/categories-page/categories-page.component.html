@@ -1,8 +1,6 @@
-<div class="category" routerLink="/categories/{{category.id}}" *ngFor="let category of categories">
-  <h1>{{category.title}}</h1>
-  <p>{{category.description}}</p>
-</div>
-
 <div class="text-center" *ngIf="loading">
   <p class="lead">Loading...</p>
 </div>
+
+<cv-category *ngFor="let category of categories" [category]="category"></cv-category>
+

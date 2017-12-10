@@ -1,0 +1,10 @@
+<div class="card mb-3">
+  <div class="card-header">
+    <h4>{{coin.year}} {{coin.name}}</h4>
+  </div>
+  <div class="card-body">
+    <img *ngIf="coin.image_link" [src]="coin.image_link" class="rounded float-left mr-3">
+    <p class="card-text" col-4>{{coin.description}}</p>
+
+  </div>
+</div>

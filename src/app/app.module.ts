@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CategoriesPageComponent } from './pages/categories-page/categories-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { CategoryComponent } from './components/category/category.component';
+import { CoinComponent } from './components/coin/coin.component';
 
 const appRoutes: Routes = [
   { path: 'categories', component: CategoriesPageComponent },
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     CategoriesPageComponent,
-    CategoryPageComponent
+    CategoryPageComponent,
+    CategoryComponent,
+    CoinComponent
   ],
   imports: [
     BrowserModule,

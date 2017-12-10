@@ -1,11 +1,8 @@
-<div *ngIf="category" class="category">
-  <h1>{{category.title}}</h1>
-  <p>{{category.description}}</p>
-  <ul *ngIf="category.coins">
-    <li *ngFor="let coin of category.coins">{{coin.year}} {{coin.name}}</li>
-  </ul>
-</div>
-
 <div class="text-center" *ngIf="loading">
   <p class="lead">Loading...</p>
+</div>
+
+<div *ngIf="category">
+  <h1>{{category.title}}</h1>
+  <cv-coin *ngFor="let coin of category.coins" [coin]="coin"></cv-coin>
 </div>
