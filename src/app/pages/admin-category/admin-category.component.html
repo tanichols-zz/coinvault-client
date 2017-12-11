@@ -52,6 +52,35 @@
 </div>
 
 <div *ngIf="category" class="container mb-5">
+  <h1>Add a Coin to "{{category.title}}" Category</h1>
+  <form (ngSubmit)="onNewCoinSubmit()">
+    <div class="form-group">
+      <label for="coinYear">Coin Year</label>
+      <input type="number" class="form-control" id="coinYear" placeholder="Year" [(ngModel)]="newCoin.year" name="coinYear" required>
+    </div>
+    <div class="form-group">
+      <label for="coinName">Coin Name</label>
+      <input type="text" class="form-control" id="coinName" placeholder="Name" [(ngModel)]="newCoin.name" name="coinName" required>
+    </div>
+    <div class="form-group">
+      <label for="coinImage">Coin Image</label>
+      <input type="text" class="form-control" id="coinImage" placeholder="Image Link" [(ngModel)]="newCoin.image_link" name="coinImage" required>
+    </div>
+    <div class="form-group">
+      <label for="coinDescription">Coin Description</label>
+      <textarea class="form-control" id="coinDescription" placeholder="Describe the new coin here..." rows="4" [(ngModel)]="newCoin.description" name="coinDescription" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Coin</button>
+  </form>
+  <div *ngIf="submitSuccess" class="alert alert-success mt-3" role="alert">
+    Category Successfully Edited!
+  </div>
+  <div *ngIf="submitFailed" class="alert alert-danger mt-3" role="alert">
+    Category Unsuccessfully Edited!
+  </div>
+</div>
+
+<div *ngIf="category" class="container mb-5">
   <form (ngSubmit)="onDeleteSubmit()">
     <button type="submit" class="btn btn-danger btn-block"> Delete "{{category.title}}" Category</button>
   </form>

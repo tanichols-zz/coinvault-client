@@ -39,7 +39,7 @@
       <label for="categoryDescription">Category Description</label>
       <textarea class="form-control" id="categoryDescription" placeholder="Describe the new category here..." rows="4" [(ngModel)]="newCategory.description" name="categoryDescription" required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Create Category</button>
   </form>
   <div *ngIf="submitSuccess" class="alert alert-success mt-3" role="alert">
     Category Successfully Created!

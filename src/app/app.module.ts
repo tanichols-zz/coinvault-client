@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
 import { CategoryService } from './services/category.service';
+import { CoinService } from './services/coin.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     CategoryService,
+    CoinService,
     AuthService,
     AuthGuard
   ],
