@@ -1,3 +1,42 @@
-<p>
-  admin-dashboard works!
-</p>
+<div class="container">
+  <h1>Categories</h1>
+  <small>Select a category to see more details</small>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created On</th>
+        <th scope="col">Updated On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="loading">
+        <th></th>
+        <th class="text-center">Loading...</th>
+      </tr>
+      <tr class="category" *ngFor="let category of categories" routerLink="/admin/categories/{{category.id}}">
+        <th scope="row">{{category.id}}</th>
+        <td>{{category.title}}</td>
+        <td>{{category.createdAt | date:'shortDate'}}</td>
+        <td>{{category.updatedAt | date:'shortDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <h1>New Category</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="categoryTitle">Category Title</label>
+      <input type="text" class="form-control" id="categoryTitle" placeholder="Title" [(ngModel)]="newCategory.title" name="categoryTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="categoryDescription">Category Description</label>
+      <textarea class="form-control" id="categoryDescription" placeholder="Describe the new category here..." rows="4" [(ngModel)]="newCategory.description" name="categoryDescription" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+

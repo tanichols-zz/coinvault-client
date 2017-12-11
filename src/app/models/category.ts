@@ -5,4 +5,6 @@ export class Category {
   title: string;
   description: string;
   coins: Array<Coin>;
+  createdAt: Date;
+  updatedAt: Date;
 }

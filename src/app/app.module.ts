@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './auth/auth.service';
@@ -15,9 +16,11 @@ import { CategoryComponent } from './components/category/category.component';
 import { CoinComponent } from './components/coin/coin.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { CallbackComponent } from './components/callback/callback.component';
+import { AdminCategoryComponent } from './pages/admin-category/admin-category.component';
 
 const appRoutes: Routes = [
   { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
+  { path: 'admin/categories/:catId', component: AdminCategoryComponent, canActivate: [AuthGuard]},
   { path: 'categories', component: CategoriesPageComponent },
   { path: 'categories/:catId', component: CategoryPageComponent},
   { path: 'callback', component: CallbackComponent },
@@ -33,7 +36,8 @@ const appRoutes: Routes = [
     CategoryComponent,
     CoinComponent,
     AdminDashboardComponent,
-    CallbackComponent
+    CallbackComponent,
+    AdminCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ const appRoutes: Routes = [
       appRoutes
     ),
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     CategoryService,
