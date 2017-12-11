@@ -8,18 +8,16 @@ import { CategoryService } from '../../services/category.service';
 import { CoinService } from '../../services/coin.service';
 
 @Component({
-  selector: 'cv-admin-category',
-  templateUrl: './admin-category.component.html',
-  styleUrls: ['./admin-category.component.css']
+  selector: 'cv-admin-coin',
+  templateUrl: './admin-coin.component.html',
+  styleUrls: ['./admin-coin.component.css']
 })
-export class AdminCategoryComponent implements OnInit {
+export class AdminCoinComponent implements OnInit {
+  coin: Coin;
   category: Category;
-  newCoin: Coin;
   loading = false;
   editSuccess = false;
   editFailed = false;
-  submitSuccess = false;
-  submitFailed = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,17 +25,26 @@ export class AdminCategoryComponent implements OnInit {
     private categoryService: CategoryService,
     private coinService: CoinService
   ) {
-    this.newCoin = new Coin();
     this.route.params.subscribe(params => {
       this.ngOnInit();
     });
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('catId');
-    this.categoryService.getCategoryById(id).then(
+    const catId = +this.route.snapshot.paramMap.get('catId');
+    this.categoryService.getCategoryById(catId).then(
       res => {
         this.category = res;
+        this.loading = false;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    const coinId = +this.route.snapshot.paramMap.get('coinId');
+    this.coinService.getCoinById(coinId, catId).then(
+      res => {
+        this.coin = res;
         this.loading = false;
       },
       err => {
@@ -47,7 +54,7 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   onEditSubmit() {
-    this.categoryService.editCategory(this.category).then(
+    this.coinService.editCoin(this.coin).then(
       res => {
         this.ngOnInit();
         this.editSuccess = true;
@@ -60,27 +67,12 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   onDeleteSubmit() {
-    this.categoryService.deleteCategory(this.category).then(
+    this.coinService.deleteCoin(this.coin).then(
       res => {
         this.location.back();
       },
       err => {
         console.log(err);
-      }
-    );
-  }
-
-  onNewCoinSubmit() {
-    console.log(this.newCoin);
-    this.coinService.createCoin(this.newCoin, this.category.id).then(
-      res => {
-        this.newCoin = new Coin();
-        this.ngOnInit();
-        this.submitSuccess = true;
-      },
-      err => {
-        console.log(err);
-        this.submitFailed = true;
       }
     );
   }

@@ -8,22 +8,6 @@ export class CoinService {
 
   constructor(private http: HttpClient) { }
 
-  // getCategories(): Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //     const apiURL = `${this.apiRoot}/categories`;
-  //     this.http.get<Category[]>(apiURL)
-  //       .toPromise()
-  //       .then(
-  //         res => {
-  //           resolve(res);
-  //         },
-  //         err => {
-  //           reject(err);
-  //         }
-  //       );
-  //   });
-  // }
-
   getCoinById(coinId: number, catId: number): Promise<any> {
     return new Promise((resolve, reject) => {
       const apiURL = `${this.apiRoot}/categories/${catId}/coins/${coinId}`;
@@ -76,7 +60,7 @@ export class CoinService {
     });
   }
 
-  deletecoin(coin: Coin): Promise<any> {
+  deleteCoin(coin: Coin): Promise<any> {
     return new Promise((resolve, reject) => {
       const apiURL = `${this.apiRoot}/coins/${coin.id}`;
       this.http.delete(apiURL, {

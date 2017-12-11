@@ -18,6 +18,7 @@ import { CoinComponent } from './components/coin/coin.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
 import { CallbackComponent } from './components/callback/callback.component';
 import { AdminCategoryComponent } from './pages/admin-category/admin-category.component';
+import { AdminCoinComponent } from './pages/admin-coin/admin-coin.component';
 
 const appRoutes: Routes = [
   {
@@ -34,6 +35,11 @@ const appRoutes: Routes = [
   {
     path: 'admin/categories/:catId',
     component: AdminCategoryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/categories/:catId/coins/:coinId',
+    component: AdminCoinComponent,
     canActivate: [AuthGuard]
   },
   {
@@ -65,7 +71,8 @@ const appRoutes: Routes = [
     CoinComponent,
     AdminDashboardComponent,
     CallbackComponent,
-    AdminCategoryComponent
+    AdminCategoryComponent,
+    AdminCoinComponent
   ],
   imports: [
     BrowserModule,

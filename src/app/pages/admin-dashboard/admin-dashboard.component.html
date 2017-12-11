@@ -2,6 +2,13 @@
   <p class="lead">Loading...</p>
 </div>
 
+<nav *ngIf="categories" aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+  </ol>
+</nav>
+
 <div *ngIf="categories" class="container  mb-5">
   <h1>Categories</h1>
   <table class="table table-hover">

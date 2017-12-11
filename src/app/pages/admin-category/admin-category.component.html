@@ -2,6 +2,14 @@
   <p class="lead">Loading...</p>
 </div>
 
+<nav *ngIf="category" aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+    <li class="breadcrumb-item"><a routerLink="/admin/categories">Categories</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{category.title}}</li>
+  </ol>
+</nav>
+
 <div *ngIf="category" class="container mb-5">
   <h1>Edit "{{category.title}}" Details</h1>
   <form (ngSubmit)="onEditSubmit()">
@@ -40,7 +48,7 @@
       <tr class="text-warning text-center" *ngIf="category.coins.length < 1">
         <td colspan="5">There are no coins! Add one below!</td>
       </tr>
-      <tr class="coin" *ngFor="let coin of category.coins">
+      <tr class="coin" *ngFor="let coin of category.coins" routerLink="/admin/categories/{{category.id}}/coins/{{coin.id}}">
         <th scope="row">{{coin.id}}</th>
         <td>{{coin.year}}</td>
         <td>{{coin.name}}</td>
