@@ -12,6 +12,8 @@ export class AdminDashboardComponent implements OnInit {
   newCategory: Category;
   categories: Category[];
   loading: boolean;
+  submitSuccess = false;
+  submitFailed = false;
 
   constructor(private categoryService: CategoryService) {
     this.loading = true;
@@ -30,14 +32,16 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  onAddSubmit() {
     this.categoryService.createCategory(this.newCategory).then(
       res => {
         this.newCategory = new Category();
         this.ngOnInit();
+        this.submitSuccess = true;
       },
       err => {
         console.log(err);
+        this.submitFailed = true;
       }
     );
   }

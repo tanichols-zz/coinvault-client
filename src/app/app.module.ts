@@ -19,12 +19,39 @@ import { CallbackComponent } from './components/callback/callback.component';
 import { AdminCategoryComponent } from './pages/admin-category/admin-category.component';
 
 const appRoutes: Routes = [
-  { path: 'admin', component: AdminDashboardComponent, canActivate: [AuthGuard] },
-  { path: 'admin/categories/:catId', component: AdminCategoryComponent, canActivate: [AuthGuard]},
-  { path: 'categories', component: CategoriesPageComponent },
-  { path: 'categories/:catId', component: CategoryPageComponent},
-  { path: 'callback', component: CallbackComponent },
-  { path: '', redirectTo: '/categories', pathMatch: 'full' }
+  {
+    path: 'admin',
+    redirectTo: '/admin/categories',
+    canActivate: [AuthGuard],
+    pathMatch: 'full'
+  },
+  {
+    path: 'admin/categories',
+    component: AdminDashboardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin/categories/:catId',
+    component: AdminCategoryComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'categories',
+    component: CategoriesPageComponent
+  },
+  {
+    path: 'categories/:catId',
+    component: CategoryPageComponent
+  },
+  {
+    path: 'callback',
+    component: CallbackComponent
+  },
+  {
+    path: '',
+    redirectTo: '/categories',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

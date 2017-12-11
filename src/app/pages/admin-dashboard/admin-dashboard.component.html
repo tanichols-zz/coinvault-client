@@ -1,8 +1,12 @@
-<div class="container">
+<div class="text-center" *ngIf="loading">
+  <p class="lead">Loading...</p>
+</div>
+
+<div *ngIf="categories" class="container  mb-5">
   <h1>Categories</h1>
-  <small>Select a category to see more details</small>
-  <table class="table">
-    <thead>
+  <table class="table table-hover">
+    <caption>Select a category to view and edit category details and category coins</caption>
+    <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
@@ -11,9 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf="loading">
-        <th></th>
-        <th class="text-center">Loading...</th>
+      <tr *ngIf="categories.length < 1">
+        <td colspan="4">There are no categories! Add one below!</td>
       </tr>
       <tr class="category" *ngFor="let category of categories" routerLink="/admin/categories/{{category.id}}">
         <th scope="row">{{category.id}}</th>
@@ -25,9 +28,9 @@
   </table>
 </div>
 
-<div class="container">
+<div *ngIf="!loading" class="container  mb-5">
   <h1>New Category</h1>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onAddSubmit()">
     <div class="form-group">
       <label for="categoryTitle">Category Title</label>
       <input type="text" class="form-control" id="categoryTitle" placeholder="Title" [(ngModel)]="newCategory.title" name="categoryTitle" required>
@@ -38,5 +41,11 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <div *ngIf="submitSuccess" class="alert alert-success mt-3" role="alert">
+    Category Successfully Created!
+  </div>
+  <div *ngIf="submitFailed" class="alert alert-danger mt-3" role="alert">
+    Category Unsuccessfully Created!
+  </div>
 </div>
 

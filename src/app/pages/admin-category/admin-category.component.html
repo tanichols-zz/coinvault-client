@@ -1,3 +1,59 @@
-<p>
-  admin-category works!
-</p>
+<div class="text-center" *ngIf="loading">
+  <p class="lead">Loading...</p>
+</div>
+
+<div *ngIf="category" class="container mb-5">
+  <h1>Edit "{{category.title}}" Details</h1>
+  <form (ngSubmit)="onEditSubmit()">
+    <div class="form-group">
+      <label for="categoryTitle">Category Title</label>
+      <input type="text" class="form-control" id="categoryTitle" placeholder="Title" [(ngModel)]="category.title" name="categoryTitle" required>
+    </div>
+    <div class="form-group">
+      <label for="categoryDescription">Category Description</label>
+      <textarea class="form-control" id="categoryDescription" placeholder="Describe the new category here..." rows="4" [(ngModel)]="category.description" name="categoryDescription" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Edits</button>
+  </form>
+  <div *ngIf="editSuccess" class="alert alert-success mt-3" role="alert">
+    Category Successfully Edited!
+  </div>
+  <div *ngIf="editFailed" class="alert alert-danger mt-3" role="alert">
+    Category Unsuccessfully Edited!
+  </div>
+</div>
+
+<div *ngIf="category" class="container mb-5">
+  <h1>{{category.title}}</h1>
+  <table class="table table-hover">
+    <caption>Select a category to see more details</caption>
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Year</th>
+        <th scope="col">Name</th>
+        <th scope="col">Created On</th>
+        <th scope="col">Updated On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-warning text-center" *ngIf="category.coins.length < 1">
+        <td colspan="5">There are no coins! Add one below!</td>
+      </tr>
+      <tr class="coin" *ngFor="let coin of category.coins">
+        <th scope="row">{{coin.id}}</th>
+        <td>{{coin.year}}</td>
+        <td>{{coin.name}}</td>
+        <td>{{coin.createdAt | date:'shortDate'}}</td>
+        <td>{{coin.updatedAt | date:'shortDate'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="category" class="container mb-5">
+  <form (ngSubmit)="onDeleteSubmit()">
+    <button type="submit" class="btn btn-danger btn-block"> Delete "{{category.title}}" Category</button>
+  </form>
+</div>
+

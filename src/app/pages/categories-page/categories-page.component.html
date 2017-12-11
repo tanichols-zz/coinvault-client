@@ -2,5 +2,6 @@
   <p class="lead">Loading...</p>
 </div>
 
-<cv-category *ngFor="let category of categories" [category]="category"></cv-category>
-
+<div *ngIf="categories">
+  <cv-category *ngFor="let category of categories" [category]="category"></cv-category>
+</div>

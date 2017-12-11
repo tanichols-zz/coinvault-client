@@ -42,10 +42,44 @@ export class CategoryService {
 
   createCategory(newCategory: Category): Promise<any> {
     return new Promise((resolve, reject) => {
-      console.log('Token');
-      console.log(localStorage.getItem('token'));
       const apiURL = `${this.apiRoot}/categories`;
       this.http.post(apiURL, newCategory, {
+        headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+      })
+        .toPromise()
+        .then(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
+
+  editCategory(category: Category): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const apiURL = `${this.apiRoot}/categories/${category.id}`;
+      this.http.put(apiURL, category, {
+        headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+      })
+        .toPromise()
+        .then(
+          res => {
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
+  }
+
+  deleteCategory(category: Category): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const apiURL = `${this.apiRoot}/categories/${category.id}`;
+      this.http.delete(apiURL, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
       })
         .toPromise()

@@ -6,4 +6,6 @@ export class Coin {
   image_link: string;
   description: string;
   category: Category;
+  createdAt: Date;
+  updatedAt: Date;
 }
