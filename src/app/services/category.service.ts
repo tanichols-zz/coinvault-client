@@ -42,6 +42,8 @@ export class CategoryService {
 
   createCategory(newCategory: Category): Promise<any> {
     return new Promise((resolve, reject) => {
+      console.log('Token');
+      console.log(localStorage.getItem('token'));
       const apiURL = `${this.apiRoot}/categories`;
       this.http.post(apiURL, newCategory, {
         headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)

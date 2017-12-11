@@ -31,7 +31,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.newCategory);
     this.categoryService.createCategory(this.newCategory).then(
       res => {
         this.newCategory = new Category();

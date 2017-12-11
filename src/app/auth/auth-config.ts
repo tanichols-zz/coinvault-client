@@ -11,7 +11,7 @@ interface AuthConfig {
 export const AUTH_CONFIG: AuthConfig = {
   CLIENT_ID: 'w187UHEwhB4iDsQSEZMYN9IG8yPsocGL',
   CLIENT_DOMAIN: 'tanichols.auth0.com',
-  AUDIENCE: 'https://tanichols.auth0.com/userinfo',
+  AUDIENCE: 'coinvault',
   REDIRECT: environment.authRedirect,
   SCOPE: 'openid profile email'
 };
